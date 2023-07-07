@@ -16,48 +16,20 @@ function_descriptions = [
         "parameters": {
             "type": "object",
             "properties": {
-                "companyName": {
+                "mail_reply": {
                     "type": "string",
-                    "description": "the name of the company from which the mail was sent to, the company requesting the sales or service. The company name should not be Uponor"
+                    "description": "You work at Uponor Sales department, your name is Eva Anderson. write a friendly mail response. Get the mane of the person that sent the response and use that name, Your answer should be very friendly and include the cost of the requested items"
                 },                        
-                "priority": {
-                    "type": "string",
-                    "description": "Try to give a priority score to this email based on how likely this email will leads to a good business opportunity, from 0 to 10; 10 most important"
+                "cost": {
+                    "type": "number",
+                    "description": "The total cost of the items that were requested"
                 },
-                "category": {
+                 "companyName": {
                     "type": "string",
-                    "description": "Try to categorise this email into categories like those: 1. Sales 2. customer support; 3. consulting; 4. partnership; etc."
-                },
-                "product": {
-                    "type": "string",
-                    "description": "Try to identify which product the client is interested in, if any"
-                },
-                "amount":{
-                    "type": "string",
-                    "description": "Try to identify the amount of products the client wants to purchase, if any"
-                },
-                "nextStep":{
-                    "type": "string",
-                    "description": "What is the suggested next step to move this forward?"
-                },
-                "namesender":{
-                    "type": "string",
-                    "description": "What is the name of the individual that sent the mail?"
-                },
-                "replymail":{
-                    "type": "string",
-                    "description": "A friendly and personal response to the mail from the company Uponors technical service department?"
-                },
-                "replymailadress":{
-                    "type": "string",
-                    "description": "the email of the person sending the mail. This email is not uponordummyacount@gmail.com"
-                },
-                "sentiment":{
-                    "type": "string",
-                    "description": "Rate the sentiment in the mail on a scale 1 to 10, where 1 is very negative and 10 is very positive"
+                    "description": "the name of the company from which the mail was sent to, the company requesting the sales or service"
                 }
             },
-            "required": ["companyName", "amount", "product", "priority", "category", "nextStep", "replymail", "namesender" , "replymailadress", "sentiment"]
+            "required": ["companyName", "cost", "mail_reply"]
         }
     }
 ]
@@ -74,8 +46,9 @@ def read_root():
 def analyse_email(email: Email):
     content = email.content
     query = f"Please extract key information from this email and prepare an answer: {content} "
+    system_message="prices: \n AquaPEX Pex pipe 1/2": 1 usd/ft \n  AquaPEX Pex pipe 3/4" : 1.3 usd/ft \n AquaPEX Pex pipe 3" : 2 usd/ft \n Fitting 1/2" : 2 usd/ft \n Fitting 3/4" : 3 usd/ft \n Fitting 1" : 4 usd/ft \n"
 
-    messages = [{"role": "user", "content": query}]
+    messages = [{"role": "user", "content": query}, {"system":system_message]]
 
     response = openai.ChatCompletion.create(
         #model="gpt-3.5-turbo-0613",
@@ -87,26 +60,12 @@ def analyse_email(email: Email):
 
     arguments = response.choices[0]["message"]["function_call"]["arguments"]
     companyName = eval(arguments).get("companyName")
-    priority = eval(arguments).get("priority")
-    product = eval(arguments).get("product")
-    amount = eval(arguments).get("amount")
-    category = eval(arguments).get("category")
-    nextStep = eval(arguments).get("nextStep")
-    namesender = eval(arguments).get("namesender")
-    replymail = eval(arguments).get("replymail")
-    replymailadress = eval(arguments).get("replymailadress")
-    sentiment = eval(arguments).get("sentiment")
-
+    cost = eval(arguments).get("cost")
+    mail_reply = eval(arguments).get("mail_reply")
+    
 
     return {
         "companyName": companyName,
-        "product": product,
+        "cost": cost,
         "amount": amount,
-        "priority": priority,
-        "category": category,
-        "nextStep": nextStep,
-        "NameSender" : namesender,
-        "ReplyMail" : replymail,
-        "ReplyMailAdress" : replymailadress,
-        "Sentiment" : sentiment
     }
