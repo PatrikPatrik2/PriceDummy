@@ -48,7 +48,7 @@ def analyse_email(email: Email):
     query = f"Please extract key information from this email and prepare an answer: {content} "
     system_message="prices: \n AquaPEX Pex pipe 1/2\": 1 usd/ft \n  AquaPEX Pex pipe 3/4\" : 1.3 usd/ft \n AquaPEX Pex pipe 3\" : 2 usd/ft \n Fitting 1/2\" : 2 usd/ft \n Fitting 3/4\" : 3 usd/ft \n Fitting 1\" : 4 usd/ft \n"
 
-    messages = [{"role": "user", "content": query}, {"system":system_message]]
+    messages = [{"role": "user", "content": query}, {"system":system_message}]
 
     response = openai.ChatCompletion.create(
         #model="gpt-3.5-turbo-0613",
