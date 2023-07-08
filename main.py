@@ -67,5 +67,5 @@ def analyse_email(email: Email):
     return {
         "companyName": companyName,
         "cost": cost,
-        "amount": amount,
+        "mail_reply": mail_reply
     }
