@@ -47,16 +47,16 @@ def analyse_email(email: Email):
     content = email.content
     query = f"Please extract key information from this email and prepare an answer: {content} "
     #system_message="prices: \n AquaPEX Pex pipe 1/2\": 1 usd/ft \n  AquaPEX Pex pipe 3/4\" : 1.3 usd/ft \n AquaPEX Pex pipe 3\" : 2 usd/ft \n Fitting 1/2\" : 2 usd/ft \n Fitting 3/4\" : 3 usd/ft \n Fitting 1\" : 4 usd/ft \n"
-system_message="""
-;OTHER COMPONENTS;A2870100;Spacer Ring VA31H for Thermal Actuators;8,7;10; 30 673 372 470 071 
-;2023 New Products;Category;Part Number;Part Description; List Price;Pkg. Qty.;UPC
-;FTGS & ACCS;1007355;H-Insulation Kit, 5.5\", 6.9\", 7.9\";2150;1; 673 372 211 468 
-;FTGS & ACCS;1007357;Reducer Bushing 5.5\" to 2.7\";90,1;1; 673 372 211 475 
-;FTGS & ACCS;1007358;Compression Wall Seal for 2.7\" Jacket;505;1; 673 372 236 362 
-;FTGS & ACCS;1007360;Compression Wall Seal for 5.5\" Jacket;595;1; 673 372 236 379 
-;FTGS & ACCS;1007361;Fitting 1/2\";715;1; 673 372 236 386 
-;FTGS & ACCS;1007362;AquaPEX Pex pipe 1/2\";760;1; 673 372 236 393 
-"""
+    system_message="""
+    ;OTHER COMPONENTS;A2870100;Spacer Ring VA31H for Thermal Actuators;8,7;10; 30 673 372 470 071 
+    ;2023 New Products;Category;Part Number;Part Description; List Price;Pkg. Qty.;UPC
+    ;FTGS & ACCS;1007355;H-Insulation Kit, 5.5\", 6.9\", 7.9\";2150;1; 673 372 211 468 
+    ;FTGS & ACCS;1007357;Reducer Bushing 5.5\" to 2.7\";90,1;1; 673 372 211 475 
+    ;FTGS & ACCS;1007358;Compression Wall Seal for 2.7\" Jacket;505;1; 673 372 236 362 
+    ;FTGS & ACCS;1007360;Compression Wall Seal for 5.5\" Jacket;595;1; 673 372 236 379 
+    ;FTGS & ACCS;1007361;Fitting 1/2\";715;1; 673 372 236 386 
+    ;FTGS & ACCS;1007362;AquaPEX Pex pipe 1/2\";760;1; 673 372 236 393 
+    """
 
     
 
