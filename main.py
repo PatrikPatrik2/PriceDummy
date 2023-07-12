@@ -918,7 +918,7 @@ def analyse_email(email: Email):
     messages = [{"role": "user", "content": query}, {"role": "system", "content": system_message} ] 
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-0613",
+        model="gpt-3.5-turbo-16k",
         #model="gpt-4",
         messages=messages,
         functions = function_descriptions,
