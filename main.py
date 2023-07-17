@@ -18,7 +18,7 @@ function_descriptions = [
             "properties": {
                 "mail_reply": {
                     "type": "string",
-                    "description": "You are working at the sales office at Uporon and your name in Pamela Anderson, write a friendly quotation to the person signing the mail"
+                    "description": "You are working at the sales office at Uporon and your name in Pamela Anderson, write a friendly quotation to the person signing the mail, including the price. If there are items in the request that are not included in the price list note that the price for those items will be given later"
                 },                        
                 "cost": {
                     "type": "number",
