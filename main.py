@@ -202,15 +202,14 @@ Part Description;List Price
         #model="gpt-3.5-turbo-16k",
         model="gpt-4",
         temperature=0.2,
-        messages=messages,
-        functions = function_descriptions,
-        function_call="auto"
+        messages=messages
     )
 
-    arguments = response.choices[0]["message"]["function_call"]["arguments"]
-    companyName = eval(arguments).get("companyName")
-    cost = eval(arguments).get("cost")
-    mail_reply = eval(arguments).get("mail_reply")
+    arguments = response.choices[0]["message"]["content"]
+    #response['choices'][0]['message']['content']})
+    companyName ="z"
+    cost = "0"
+    mail_reply = arguments
     
 
     return {
