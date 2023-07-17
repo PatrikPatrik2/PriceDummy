@@ -18,7 +18,7 @@ function_descriptions = [
             "properties": {
                 "mail_reply": {
                     "type": "string",
-                    "description": "You work at Uponor Sales department, your name is Eva Anderson. write a friendly mail response. Get the mane of the person that sent the response and use that name, Your answer should be very friendly and include the cost of the requested items"
+                    "description": "From the mail below, exract what shall be quoted , select the items that yields the lowest total cost, only the quantities from the price list should be used and combined to fulfill the requested items. Formulate a friendly mail response including the quotation. You are working at the sales office at Uporon and your name in Pamela Anderson"
                 },                        
                 "cost": {
                     "type": "number",
@@ -46,7 +46,7 @@ def read_root():
 def analyse_email(email: Email):
     content = email.content
     query = f"Please extract key information from this email and prepare an answer: {content} "
-    #system_message="prices: \n AquaPEX Pex pipe 1/2\": 1 usd/ft \n  AquaPEX Pex pipe 3/4\" : 1.3 usd/ft \n AquaPEX Pex pipe 3\" : 2 usd/ft \n Fitting 1/2\" : 2 usd/ft \n Fitting 3/4\" : 3 usd/ft \n Fitting 1\" : 4 usd/ft \n"
+    #system_message="price list: \n AquaPEX Pex pipe 1/2\": 1 usd/ft \n  AquaPEX Pex pipe 3/4\" : 1.3 usd/ft \n AquaPEX Pex pipe 3\" : 2 usd/ft \n Fitting 1/2\" : 2 usd/ft \n Fitting 3/4\" : 3 usd/ft \n Fitting 1\" : 4 usd/ft \n"
     system_message="""
 Part Description;List Price
 5/16\" Wirsbo hePEX, 100-ft. coil;$154,02
