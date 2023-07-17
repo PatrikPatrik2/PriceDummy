@@ -198,8 +198,9 @@ Part Description;List Price
     messages = [{"role": "user", "content": query}, {"role": "system", "content": system_message} ] 
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-16k",
-        #model="gpt-4",
+        #model="gpt-3.5-turbo-16k",
+        model="gpt-4",
+        temperature=0.1,
         messages=messages,
         functions = function_descriptions,
         function_call="auto"
