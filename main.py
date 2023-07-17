@@ -45,9 +45,10 @@ def read_root():
 @app.post("/")
 def analyse_email(email: Email):
     content = email.content
-    query = f"From the mail below, exract what shall be quoted , select the items that yields the lowest total cost, only the quantities from the price list should be used and combined to fulfill the requested items.: {content} "
+    query = f"From the mail below, exract what shall be quoted using the Price List, select the items that yields the lowest total cost, only the quantities from the price list should be used and combined to fulfill the requested items.: {content} "
     #system_message="price list: \n AquaPEX Pex pipe 1/2\": 1 usd/ft \n  AquaPEX Pex pipe 3/4\" : 1.3 usd/ft \n AquaPEX Pex pipe 3\" : 2 usd/ft \n Fitting 1/2\" : 2 usd/ft \n Fitting 3/4\" : 3 usd/ft \n Fitting 1\" : 4 usd/ft \n"
     system_message="""
+Price List:
 Part Description;List Price
 5/16\" Wirsbo hePEX, 100-ft. coil;$154,02
 ⅜\" Wirsbo hePEX, 100-ft. coil;$166,26
